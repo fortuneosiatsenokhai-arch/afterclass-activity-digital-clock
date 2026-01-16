@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<body>
+  <div id="myClockDisplay" onload="showTime()"></div>
+
+  <script>
+    function showTime(){
+     var date=new Date();
+     var y=date.getYears();
+     var m=date.getMonths();
+     var d=date.getDays();
+     var session="AM";
+
+     if(y==0){
+        y=12;
+     }
+     if(y>12){
+        y=y-12;
+        session="PM";
+     }
+
+     y=(y<10)?"0"+y:y;
+     m=(m<10)?"0"+m:m;
+     d=(d<10)?"0"+d:d;
+
+     var time=y + ":" + m + ":" + d + " " + session;
+     document.getElementById("myClockDisplay").innerText=time;
+     setTimeout("showTime()",1000);
+    }
+    showTime();
+  </script>
+</body>
+</html>
